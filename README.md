@@ -2,6 +2,11 @@
 
 A lightweight Minecraft client-side mod for Fabric that enables X-Ray vision and FullBright features to help you find valuable blocks and explore dark areas.
 
+![XRay Demo](media/demo.png)
+
+![Minecraft Version](https://img.shields.io/badge/Minecraft-1.21.7-brightgreen)
+![Mod Loader](https://img.shields.io/badge/Mod%20Loader-Fabric-blue)
+
 ## Features
 
 - **X-Ray Mode:** See only selected blocks (ores, chests, spawners, etc.) through walls.
@@ -30,6 +35,11 @@ cd xray
 ```
 
 The built mod will be in `build/libs/xray-1.0.0.jar`
+
+## TODO
+- [ ] Add more options to add/remove blocks to/from the X-Ray list
+- [ ] Fix rendering of liquids (water/lava). Currently only the surface is rendered, not the full block.
+- [ ] Add Sodium compatibility
 
 ## License
 
