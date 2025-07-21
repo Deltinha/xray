@@ -1,6 +1,7 @@
 package xray;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
@@ -52,9 +53,18 @@ public class XRayManager {
         visibleBlockIds.forEach(this::addVisibleBlock);
     }
 
+    public void addVisibleBlock(Block block) {
+        visibleBlocks.add(block);
+        if (enabled) {
+            MinecraftClient client = MinecraftClient.getInstance();
+            if (client.worldRenderer != null) {
+                client.worldRenderer.reload();
+            }
+        }
+    }
+
     public Set<Block> getVisibleBlocks() {
-        // TODO: Maybe need to return a new Set to avoid external modification
-        return visibleBlocks;
+        return new HashSet<>(visibleBlocks);
     }
 
     private void addVisibleBlock(String blockId) {
