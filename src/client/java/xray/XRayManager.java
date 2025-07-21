@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,6 +48,22 @@ public class XRayManager {
 
     private XRayManager() {
         initializeDefaultBlocks();
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public boolean isVisible(Block block, BlockPos pos) {
+        if (!enabled) {
+            return true;
+        }
+
+        boolean visible = visibleBlocks.contains(block);
+
+        // TODO: Maybe review the interaction with exposed blocks; This would bypass anti-X-Ray plugins that check for exposed blocks.
+
+        return visible;
     }
 
     private void initializeDefaultBlocks() {
@@ -94,21 +111,28 @@ public class XRayManager {
     }
 
     public void toggle() {
-        enabled = !enabled;
         if (enabled) {
-            enable();
-        } else {
             disable();
+        } else {
+            enable();
         }
     }
 
     private void enable() {
-        // Logic to enable X-Ray mode
+        enabled = true;
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.worldRenderer != null) {
+            client.worldRenderer.reload();
+        }
         LOGGER.info("X-Ray mode enabled");
     }
 
     private void disable() {
-        // Logic to disable X-Ray mode
+        enabled = false;
+        MinecraftClient client = MinecraftClient.getInstance();
+        if (client.worldRenderer != null) {
+            client.worldRenderer.reload();
+        }
         LOGGER.info("X-Ray mode disabled");
     }
 }
