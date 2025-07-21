@@ -19,15 +19,12 @@ public abstract class BlockRenderInfoMixin {
     public BlockState blockState;
 
     /**
-     * This mixin hides and shows regular blocks when using X-Ray, if Indigo
-     * is running and Sodium is not installed.
+     * Changes the behavior of Indigo's block rendering
      */
     @Inject(at = @At("HEAD"), method = "shouldDrawSide", cancellable = true)
     private void onShouldDrawSide(Direction face, CallbackInfoReturnable<Boolean> cir) {
         XRayManager xray = XRayManager.getInstance();
-        Boolean shouldDraw = xray.shouldDrawSide(blockState.getBlock(), blockPos);
-        if (shouldDraw != null) {
-            cir.setReturnValue(shouldDraw);
-        }
+        Boolean shouldDraw = xray.isVisible(blockState.getBlock(), blockPos);
+        cir.setReturnValue(shouldDraw);
     }
 }
