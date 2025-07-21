@@ -3,7 +3,9 @@
   "package": "xray.mixin.client",
   "compatibilityLevel": "JAVA_21",
   "client": [
-    "BlockRenderInfoMixin"
+    "BlockRenderInfoMixin",
+    "AbstractBlockStateMixin",
+    "SimpleOptionAccessor"
   ],
   "injectors": {
     "defaultRequire": 1
