@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "xray",
+	"version": "${version}",
+	"name": "XRay",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/xray/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"xray.XRay"
+		],
+		"client": [
+			"xray.XRayClient"
+		]
+	},
+	"mixins": [
+		"xray.mixins.json",
+		{
+			"config": "xray.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.21.7",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
