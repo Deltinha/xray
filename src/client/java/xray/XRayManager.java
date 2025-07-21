@@ -120,8 +120,6 @@ public class XRayManager {
 
     private void enable() {
         enabled = true;
-        GammaManager.getInstance().setMaxGamma();
-
         MinecraftClient client = MinecraftClient.getInstance();
         client.chunkCullingEnabled = false;
         if (client.worldRenderer != null) {
@@ -134,7 +132,6 @@ public class XRayManager {
         enabled = false;
         MinecraftClient client = MinecraftClient.getInstance();
         client.chunkCullingEnabled = true;
-        GammaManager.getInstance().resetGamma();
         if (client.worldRenderer != null) {
             client.worldRenderer.reload();
         }
