@@ -63,6 +63,16 @@ public class XRayManager {
         }
     }
 
+    public void removeVisibleBlock(Block block) {
+        visibleBlocks.remove(block);
+        if (enabled) {
+            MinecraftClient client = MinecraftClient.getInstance();
+            if (client.worldRenderer != null) {
+                client.worldRenderer.reload();
+            }
+        }
+    }
+
     public Set<Block> getVisibleBlocks() {
         return new HashSet<>(visibleBlocks);
     }
