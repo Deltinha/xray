@@ -36,6 +36,29 @@ cd xray
 
 The built mod will be in `build/libs/xray-1.0.0.jar`
 
+## Developing
+
+To run and test the mod in a development environment:
+
+Java 21 must be installed and set as your active JDK.
+You can verify it with:
+```bash
+java -version
+```  
+
+Clone the repository
+```bash
+git clone git@github.com:Deltinha/xray.git
+cd xray
+```
+
+Run Minecraft in dev mode
+```bash
+./gradlew runClient 
+```
+
+This command will launch a development instance of Minecraft with your mod pre-loaded. You can use it to quickly test changes during development.
+
 ## TODO
 - [ ] Add more options to add/remove blocks to/from the X-Ray list
 - [ ] Fix rendering of liquids (water/lava). Currently only the surface is rendered, not the full block.
