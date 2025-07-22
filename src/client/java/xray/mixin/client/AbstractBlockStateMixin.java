@@ -13,7 +13,7 @@ import xray.XRayManager;
 @Mixin(AbstractBlock.AbstractBlockState.class)
 public class AbstractBlockStateMixin {
     @Inject(method = "getAmbientOcclusionLightLevel", at = @At("HEAD"), cancellable = true)
-    private void getAmbientOcclusionLightLevel(BlockView world, BlockPos pos, CallbackInfoReturnable<Float> cir) {
+    private void onGetAmbientOcclusionLightLevelHead(BlockView world, BlockPos pos, CallbackInfoReturnable<Float> cir) {
         XRayManager xray = XRayManager.getInstance();
         if (xray.isEnabled()) {
             cir.setReturnValue(1.0f);

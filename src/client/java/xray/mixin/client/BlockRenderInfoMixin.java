@@ -22,9 +22,9 @@ public abstract class BlockRenderInfoMixin {
      * Changes the behavior of Indigo's block rendering
      */
     @Inject(at = @At("HEAD"), method = "shouldDrawSide", cancellable = true)
-    private void onShouldDrawSide(Direction face, CallbackInfoReturnable<Boolean> cir) {
+    private void onShouldDrawSideHead(Direction face, CallbackInfoReturnable<Boolean> cir) {
         XRayManager xray = XRayManager.getInstance();
-        Boolean shouldDraw = xray.isVisible(blockState.getBlock(), blockPos);
+        boolean shouldDraw = xray.isVisible(blockState.getBlock(), blockPos);
         cir.setReturnValue(shouldDraw);
     }
 }
