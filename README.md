@@ -17,8 +17,8 @@ A lightweight Minecraft client-side mod for Fabric that enables X-Ray vision and
 
 1. Download and install [Fabric Loader](https://fabricmc.net/use/installer/)
 2. Download [Fabric API](https://modrinth.com/mod/fabric-api) for Minecraft 1.21.7
-3. Download the latest EzZoom release
-4. Place both the Fabric API and EzZoom `.jar` files in your `mods` folder
+3. Download the latest xray release
+4. Place both the Fabric API and xray `.jar` files in your `mods` folder
 5. Launch Minecraft with the Fabric profile
 
 ## Usage
